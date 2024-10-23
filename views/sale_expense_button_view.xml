@@ -1,0 +1,91 @@
+<odoo>
+    <!-- <record id="se_service_tree" model="ir.ui.view">
+        <field name="name">tree.se.service</field>
+        <field name="model">se.service</field>
+        <field name="arch" type="xml">
+            <tree string="se service">
+                <field name="service_name"/>
+                <field name="service_department"/>
+                <field name="service_description"/>
+                <field name="service_remarks"/>
+                <field name="service_methodology"/>
+            </tree>
+        </field>
+    </record> -->
+
+    <!-- Form view of Settment Model -->
+   <!--  <record id="se_service_form_view" model="ir.ui.view">
+            <field name="name">se.service.form.view</field>
+            <field name="model">se.service</field>
+            <field name="arch" type="xml">
+                <form string="se service">
+                    <header>
+                        <button name="create_apple" string="Create Apple" type="object" class="btn-primary"/>
+                    </header>
+                       
+                    <sheet>
+                        <field name="service_name"/>
+                        <field name="service_department"/>
+                        <field name="service_description"/>
+                        <field name="service_remarks"/>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+ -->
+        <!-- <record id="view_order_form" model="ir.ui.view">
+            <field   name="name">sale.order.view.form.apple</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+               <xpath expr="//header" position="inside">
+                    <field name="warehouse_id_testing"/>
+                    <button name="create_cash_transfer" id="button_cash_transfer" string="Cash Transfer" class="btn-primary" type="object"/>
+                </xpath>
+            </field>
+    </record> -->
+    <record id="inherit_view_move_form" model="ir.ui.view">
+    <field name="name">account.move.form.cashier</field>
+    <field name="model">account.move</field>
+    <field name="inherit_id" ref="account.view_move_form"/>
+    <field name="arch" type="xml">
+        <xpath expr="//header" position="inside">
+            <field name="m_type" invisible="1"/>
+            <!-- <button name="create_cash_transfer" id="button_cash_transfer" string="Cash Transfer" class="btn-primary" type="object"   invisible ="state not in ['posted'] or payment_state not in ['paid'] or move_type not in ['out_invoice'] or m_type not in ['not transfer']"/> -->
+            <!-- <button name="action_cash_transfer" id="button_create_cash_transfer" string="Create Cash Transfer" class="btn-primary" type="object"   invisible ="state not in ['posted'] or move_type not in ['out_invoice'] or m_type not in ['not transfer']"/> -->
+            <!-- <button name="create_sale_cashtransfer" id="button_sale_cashtransfer" context="{'default_cash_sale_id': id}" string="Create Cash Transfer" class="btn-primary" type="object" invisible="state != 'posted' or payment_state not in ('not_paid', 'partial') or move_type not in ('out_invoice', 'out_refund',  'out_receipt') or m_type not in ['not transfer']" /> -->
+            <!-- <button name="create_sale_cashtransfer" id="button_sale_cashtransfer" context="{'default_cash_sale_id': id}" string="Create Cash Transfer" class="btn-primary" type="object"
+            invisible ="state not in ['posted'] or payment_state not in ['paid'] or move_type not in ['out_invoice'] or m_type not in ['not transfer']"/> -->
+            <button name="create_sale_cashtransfer" id="button_sale_cashtransfer" context="{'default_cash_sale_id': id}" string="Create Cash Transfer" class="btn-primary" type="object"
+            invisible ="state not in ['posted'] or payment_state not in ['paid'] or move_type not in ['out_invoice'] or m_type not in ['not transfer']"/>
+        </xpath>
+        <xpath expr="//div[@name='button_box']" position="inside">
+            <button type="object"  name="action_view_cash_transfer"
+                                icon="fa-pencil-square-o" invisible=" move_type not in ['out_invoice'] or state not in ['posted']">
+            <field name="transfer_count" widget="statinfo" string="Cash Transfer"/>
+            </button>
+        </xpath>
+    </field>
+    </record>
+
+   <!--  <record id="inherit_view_move_form2" model="ir.ui.view">
+    <field name="name">account.move.form.cashier.two</field>
+    <field name="model">account.move</field>
+    <field name="inherit_id" ref="account.view_move_form"/>
+    <field name="arch" type="xml">
+        <xpath expr="//div[@name='button_box']" position="inside">
+            <widget name="web_ribbon" title="Transfer" invisible ="m_type not in ['transfer']"/>
+        </xpath>
+    </field>
+    </record> -->
+   <!--  <record id="action_se_service" model="ir.actions.act_window">
+        <field name="name">se service</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">se.service</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p>Create your first Type Of Assets!</p>
+        </field>
+    </record>
+    <menuitem id="waaneiza_se_service" name="se service" parent="waaneiza_fa_root" action="action_se_service" />  -->
+</odoo>

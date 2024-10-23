@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_waaneiza_sale_expense_waaneiza_sale_expense,waaneiza_sale_expense.waaneiza_sale_expense,model_waaneiza_sale_expense_waaneiza_sale_expense,base.group_user,1,1,1,1
